@@ -1,12 +1,17 @@
 import 'dart:math';
 
-Shape shapeFactory({String type, num raduis=2, num side=2}) {
-  if (type == 'circle') return Circle(raduis);
-  if (type == 'square') return Square(side);
-  throw 'Can\'t create $type.';
-}
+// Shape shapeFactory({String type, num raduis=2, num side=2}) {
+//   if (type == 'circle') return Circle(raduis);
+//   if (type == 'square') return Square(side);
+//   throw 'Can\'t create $type.';
+// }
 
 abstract class Shape {
+  factory Shape({String type, num raduis=2, num side=2}) {
+    if (type == 'circle') return Circle(raduis);
+    if (type == 'square') return Square(side);
+    throw 'Can\'t create $type.';
+  }
   num get area;
 }
 
@@ -24,8 +29,8 @@ class Square implements Shape {
 
 main() {
   try{
-    final circle = shapeFactory(type: 'circle');
-    final square = shapeFactory(type: 'square', side: 4);
+    final circle = Shape(type: 'circle');
+    final square = Shape(type: 'square', side: 6);
     print(circle.area);
     print(square.area);
   }
